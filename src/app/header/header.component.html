@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" class="header-toolbar">
+  <div class="toolbar-content">
+    <div class="logo-section">
+      <mat-icon class="logo-icon">store</mat-icon>
+      <span class="logo-text">ElectronicArt</span>
+    </div>
+    
+    <nav class="nav-links">
+      <a mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>home</mat-icon>
+        Inicio
+      </a>
+      <a mat-button routerLink="/gallery" routerLinkActive="active-link">
+        <mat-icon>inventory</mat-icon>
+        Productos
+      </a>
+      <a mat-button href="#contacto">
+        <mat-icon>contact_support</mat-icon>
+        Contacto
+      </a>
+    </nav>
+  </div>
+</mat-toolbar> 

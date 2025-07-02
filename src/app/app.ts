@@ -5,8 +5,8 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: '../styles.css'
 })
 export class App {
-  protected title = 'ExamenApp';
+  protected title = 'ElectronicArt';
 }

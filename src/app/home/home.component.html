@@ -1,0 +1,67 @@
+<app-header></app-header>
+
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Bienvenido a ElectronicArt</h1>
+      <p class="hero-subtitle">Descubre nuestra increíble colección de productos de alta calidad</p>
+      <button mat-raised-button color="accent" routerLink="/gallery" class="cta-button">
+        <mat-icon>shopping_cart</mat-icon>
+        Ver Productos
+      </button>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="featured-section">
+    <div class="section-header">
+      <h2>Productos Destacados</h2>
+      <mat-divider></mat-divider>
+    </div>
+    
+    <div class="products-grid">
+      <mat-card class="product-card" *ngFor="let producto of productosPrincipales">
+        <img mat-card-image [src]="producto.imagen" [alt]="producto.nombre" class="product-image">
+        <mat-card-content>
+          <h3 class="product-title">{{ producto.nombre }}</h3>
+          <p class="product-description">{{ producto.descripcion }}</p>
+          <div class="product-price">{{ producto.precio }}</div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary">
+            <mat-icon>visibility</mat-icon>
+            Ver Detalles
+          </button>
+          <button mat-raised-button color="accent">
+            <mat-icon>add_shopping_cart</mat-icon>
+            Agregar
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="features-grid">
+      <div class="feature-item">
+        <mat-icon class="feature-icon">local_shipping</mat-icon>
+        <h3>Envío Gratis</h3>
+        <p>En compras superiores a $500</p>
+      </div>
+      <div class="feature-item">
+        <mat-icon class="feature-icon">security</mat-icon>
+        <h3>Pago Seguro</h3>
+        <p>Transacciones 100% seguras</p>
+      </div>
+      <div class="feature-item">
+        <mat-icon class="feature-icon">support_agent</mat-icon>
+        <h3>Soporte 24/7</h3>
+        <p>Atención al cliente disponible</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<app-footer></app-footer> 

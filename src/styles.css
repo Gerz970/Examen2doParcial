@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color: #f5f8ff;
+  color: #1a237e;
+}
+
+/* Variables de colores azules */
+:root {
+  --primary-blue: #1976d2;
+  --primary-dark: #1565c0;
+  --primary-light: #42a5f5;
+  --accent-blue: #2196f3;
+  --accent-light: #64b5f6;
+  --background-light: #f5f8ff;
+  --background-white: #ffffff;
+  --text-dark: #1a237e;
+  --text-medium: #283593;
+  --text-light: #3949ab;
+  --border-light: #e3f2fd;
+  --shadow-blue: rgba(25, 118, 210, 0.1);
+}
