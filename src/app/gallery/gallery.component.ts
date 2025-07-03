@@ -13,6 +13,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { API_URL } from '../../environments/environment';
+import { ImageErrorDirective } from '../shared/image-error.directive';
+import { ImageValidationService } from '../shared/image-validation.service';
 
 interface Producto {
   idProducto: number;
@@ -62,7 +64,8 @@ interface CategoriaConProductos {
     MatInputModule,
     MatFormFieldModule,
     MatChipsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ImageErrorDirective
   ]
 })
 export class GalleryComponent implements OnInit {
@@ -76,14 +79,13 @@ export class GalleryComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private imageValidationService: ImageValidationService
   ) {}
 
   ngOnInit() {
     this.cargarCategoriasConProductos();
   }
-
-
 
   cargarCategoriasConProductos() {
     this.loading = true;
@@ -118,15 +120,13 @@ export class GalleryComponent implements OnInit {
     });
   }
 
-
-
   cargarProductosEjemplo() {
     this.categoriasConProductos = [
       {
         idCategoria: 1,
         nombre: "Smartphones y Accesorios",
         descripcion: "Descubre lo último en tecnología móvil y sus complementos.",
-        urlImagen: "https://ejemplo.com/imagenes/categoria_smartphones.jpg",
+        urlImagen: "https://via.placeholder.com/400x200/2196F3/ffffff?text=Smartphones+y+Accesorios",
         fechaCreacion: "2025-06-30T20:30:42.727",
         activo: true,
         productos: [
@@ -164,7 +164,7 @@ export class GalleryComponent implements OnInit {
         idCategoria: 2,
         nombre: "Computadoras y Tablets",
         descripcion: "Equipos de cómputo para trabajo y entretenimiento.",
-        urlImagen: "https://ejemplo.com/imagenes/categoria_computadoras.jpg",
+        urlImagen: "https://via.placeholder.com/400x200/4CAF50/ffffff?text=Computadoras+y+Tablets",
         fechaCreacion: "2025-06-30T20:30:42.727",
         activo: true,
         productos: [
@@ -202,7 +202,7 @@ export class GalleryComponent implements OnInit {
         idCategoria: 3,
         nombre: "Audio y Sonido",
         descripcion: "Equipos de audio profesionales y para el hogar.",
-        urlImagen: "https://ejemplo.com/imagenes/categoria_audio.jpg",
+        urlImagen: "https://via.placeholder.com/400x200/FF9800/ffffff?text=Audio+y+Sonido",
         fechaCreacion: "2025-06-30T20:30:42.727",
         activo: true,
         productos: [
@@ -227,7 +227,7 @@ export class GalleryComponent implements OnInit {
             precio: 179.00,
             sku: 'ACANZETA',
             stock: 80,
-            urlImagenPrincipal: 'https://http2.mlstatic.com/D_NQ_NP_906957-MLU77933132990_082024-O.webp',
+            urlImagenPrincipal: 'https://via.placeholder.com/300x200/9C27B0/ffffff?text=Auriculares+Z',
             fechaCreacion: '2025-06-30T20:31:01.32',
             ultimaActualizacion: '2025-06-30T20:31:01.32',
             activo: true,
@@ -301,5 +301,51 @@ export class GalleryComponent implements OnInit {
 
   formatearFecha(fecha: string): string {
     return new Date(fecha).toLocaleDateString('es-ES');
+  }
+
+  /**
+   * Obtiene la URL de imagen dummy para un producto
+   * @param producto El producto para el cual generar la imagen dummy
+   * @returns URL de la imagen dummy
+   */
+  getDummyImageUrl(producto: Producto): string {
+    return this.imageValidationService.getDummyImage(
+      `Imagen de ${producto.nombre}`,
+      300,
+      200
+    );
+  }
+
+  /**
+   * Valida las URLs de imagen de todos los productos
+   * @param productos Array de productos a validar
+   */
+  validateProductImages(productos: Producto[]): void {
+    // Comentamos la validación asíncrona para evitar interferencias con el renderizado
+    // La validación se maneja ahora directamente en la directiva ImageErrorDirective
+    console.log('Validación de imágenes deshabilitada para evitar interferencias');
+    
+    // Opcional: Solo validar en modo desarrollo
+    // if (imageUrls.length > 0) {
+    //   this.imageValidationService.validateMultipleImageUrls(imageUrls)
+    //     .subscribe({
+    //       next: (validationMap) => {
+    //         console.log('Validación de imágenes completada:', validationMap);
+    //       },
+    //       error: (error) => {
+    //         console.error('Error al validar imágenes:', error);
+    //       }
+    //     });
+    // }
+  }
+
+  /**
+   * Maneja la carga exitosa de una imagen
+   * @param event Evento de carga de la imagen
+   */
+  onImageLoad(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    // Aplicar opacidad completa inmediatamente sin transiciones adicionales
+    img.style.opacity = '1';
   }
 } 

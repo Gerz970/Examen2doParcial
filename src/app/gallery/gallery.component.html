@@ -64,7 +64,14 @@
     <div class="products-grid" *ngIf="productosFiltrados.length > 0">
       <mat-card class="product-card" *ngFor="let producto of productosFiltrados">
         <div class="product-image-container">
-          <img mat-card-image [src]="producto.urlImagenPrincipal" [alt]="producto.nombre" class="product-image">
+          <img 
+            mat-card-image 
+            [src]="producto.urlImagenPrincipal" 
+            [alt]="producto.nombre" 
+            class="product-image"
+            appImageError
+            [fallbackImage]="getDummyImageUrl(producto)"
+            (load)="onImageLoad($event)">
           <div class="product-overlay">
             <button mat-fab color="accent" (click)="agregarAlCarrito(producto)" class="add-to-cart-btn">
               <mat-icon>add_shopping_cart</mat-icon>

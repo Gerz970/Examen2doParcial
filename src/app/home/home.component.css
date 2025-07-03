@@ -141,6 +141,103 @@
   margin-bottom: 16px;
 }
 
+.product-category {
+  color: var(--accent-blue);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.product-stock {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-medium);
+  font-size: 0.9rem;
+}
+
+.stock-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.featured-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+}
+
+.featured-badge mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.loading-container p {
+  margin-top: 16px;
+  color: var(--text-medium);
+  font-size: 1.1rem;
+}
+
+.no-products {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--background-white);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-blue);
+  margin: 20px;
+}
+
+.no-products-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.no-products h3 {
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.no-products p {
+  color: var(--text-medium);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 mat-card-actions {
   display: flex;
   justify-content: space-between;
@@ -212,6 +309,12 @@ mat-card-actions {
   .products-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+  
+  .product-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
   
   .features-grid {

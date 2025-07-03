@@ -193,11 +193,12 @@
   height: 250px;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.3s ease;
+  transition: opacity 0.2s ease;
+  opacity: 0;
 }
 
 .product-card:hover .product-image {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .product-overlay {
